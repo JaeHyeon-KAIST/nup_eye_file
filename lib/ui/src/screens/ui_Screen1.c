@@ -52,7 +52,7 @@ ui_eye3 = lv_img_create(ui_Screen1);
 lv_img_set_src(ui_eye3, &ui_img_eye3_png);
 lv_obj_set_width( ui_eye3, LV_SIZE_CONTENT);  /// 286
 lv_obj_set_height( ui_eye3, LV_SIZE_CONTENT);   /// 270
-lv_obj_set_x( ui_eye3, 7 );
+lv_obj_set_x( ui_eye3, -7 );
 lv_obj_set_y( ui_eye3, -15 );
 lv_obj_set_align( ui_eye3, LV_ALIGN_CENTER );
 lv_obj_add_flag( ui_eye3, LV_OBJ_FLAG_ADV_HITTEST );   /// Flags
