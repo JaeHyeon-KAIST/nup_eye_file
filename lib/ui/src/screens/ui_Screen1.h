@@ -18,11 +18,13 @@ extern lv_obj_t *ui_eye0;
 extern lv_obj_t *ui_eye1;
 extern lv_obj_t *ui_eye2;
 extern lv_obj_t *ui_eye3;
+extern lv_obj_t *ui_eye4;
 // CUSTOM VARIABLES
 extern lv_obj_t *uic_eye0;
 extern lv_obj_t *uic_eye1;
 extern lv_obj_t *uic_eye2;
 extern lv_obj_t *uic_eye3;
+extern lv_obj_t *uic_eye4;
 
 #ifdef __cplusplus
 } /*extern "C"*/

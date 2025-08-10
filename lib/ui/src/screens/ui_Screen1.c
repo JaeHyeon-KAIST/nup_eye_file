@@ -5,11 +5,12 @@
 
 #include "../ui.h"
 
+lv_obj_t *uic_eye4;
 lv_obj_t *uic_eye3;
 lv_obj_t *uic_eye2;
 lv_obj_t *uic_eye1;
 lv_obj_t *uic_eye0;
-lv_obj_t *ui_Screen1 = NULL;lv_obj_t *ui_eye0 = NULL;lv_obj_t *ui_eye1 = NULL;lv_obj_t *ui_eye2 = NULL;lv_obj_t *ui_eye3 = NULL;
+lv_obj_t *ui_Screen1 = NULL;lv_obj_t *ui_eye0 = NULL;lv_obj_t *ui_eye1 = NULL;lv_obj_t *ui_eye2 = NULL;lv_obj_t *ui_eye3 = NULL;lv_obj_t *ui_eye4 = NULL;
 // event funtions
 
 // build funtions
@@ -59,10 +60,20 @@ lv_obj_add_flag( ui_eye3, LV_OBJ_FLAG_ADV_HITTEST );   /// Flags
 lv_obj_clear_flag( ui_eye3, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_img_set_angle(ui_eye3,1800);
 
+ui_eye4 = lv_img_create(ui_Screen1);
+lv_img_set_src(ui_eye4, &ui_img_eye0_eye0_11_png);
+lv_obj_set_width( ui_eye4, LV_SIZE_CONTENT);  /// 302
+lv_obj_set_height( ui_eye4, LV_SIZE_CONTENT);   /// 301
+lv_obj_set_align( ui_eye4, LV_ALIGN_CENTER );
+lv_obj_add_flag( ui_eye4, LV_OBJ_FLAG_ADV_HITTEST );   /// Flags
+lv_obj_clear_flag( ui_eye4, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
+lv_img_set_angle(ui_eye4,1800);
+
 uic_eye0 = ui_eye0;
 uic_eye1 = ui_eye1;
 uic_eye2 = ui_eye2;
 uic_eye3 = ui_eye3;
+uic_eye4 = ui_eye4;
 
 }
 
@@ -80,5 +91,7 @@ uic_eye2= NULL;
 ui_eye2= NULL;
 uic_eye3= NULL;
 ui_eye3= NULL;
+uic_eye4= NULL;
+ui_eye4= NULL;
 
 }
