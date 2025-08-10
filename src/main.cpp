@@ -13,6 +13,7 @@ void showGIF0() {
     lv_obj_add_flag(uic_eye1, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(uic_eye2, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(uic_eye3, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(uic_eye4, LV_OBJ_FLAG_HIDDEN);
     EyeAni0_Animation(uic_eye0, 0);
     if (Serial) Serial.println("GIF0 shown");
 }
@@ -22,6 +23,7 @@ void showGIF1() {
     lv_obj_add_flag(uic_eye0, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(uic_eye2, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(uic_eye3, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(uic_eye4, LV_OBJ_FLAG_HIDDEN);
     EyeAni1_Animation(uic_eye1, 0);
     if (Serial) Serial.println("GIF1 shown");
 }
@@ -31,6 +33,7 @@ void showGIF2() {
     lv_obj_add_flag(uic_eye0, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(uic_eye1, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(uic_eye3, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(uic_eye4, LV_OBJ_FLAG_HIDDEN);
     EyeAni2_Animation(uic_eye2, 0);
     if (Serial) Serial.println("GIF2 shown");
 }
@@ -40,7 +43,17 @@ void showIMG3() {
     lv_obj_add_flag(uic_eye0, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(uic_eye1, LV_OBJ_FLAG_HIDDEN);
     lv_obj_add_flag(uic_eye2, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(uic_eye4, LV_OBJ_FLAG_HIDDEN);
     if (Serial) Serial.println("IMG3 shown");
+}
+
+void showIMG4() {
+    lv_obj_clear_flag(uic_eye4, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(uic_eye0, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(uic_eye1, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(uic_eye2, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_add_flag(uic_eye3, LV_OBJ_FLAG_HIDDEN);
+    if (Serial) Serial.println("IMG4 shown");
 }
 
 // 단일 키 입력 즉시 처리
@@ -56,11 +69,13 @@ void handleSerialInput() {
             showGIF2();
         } else if (c == '3') {
             showIMG3();
+        } else if (c == '4') {
+            showIMG4();
         } else if (c != '\r' && c != '\n') {
             // 무의미한 키는 무시
             Serial.print("Unknown key: ");
             Serial.println(c);
-            Serial.println("Valid keys: 1, 2, 3");
+            Serial.println("Valid keys: 0, 1, 2, 3, 4");
         }
     }
 }
@@ -82,10 +97,13 @@ void handleSerialInput() {
 //             case 3:
 //                 showIMG3();
 //                 break;
+//             case 4:
+//                 showIMG4();
+//                 break;
 //             default:
 //                 Serial.print("Unknown byte: ");
 //                 Serial.println(byteVal);
-//                 Serial.println("Valid bytes: 0, 1, 2, 3");
+//                 Serial.println("Valid bytes: 0, 1, 2, 3, 4");
 //                 break;
 //         }
 //     }
@@ -97,7 +115,7 @@ void setup() {
     if (!panel.begin()) {
         while (1) {
             if (Serial) Serial.println("Error, failed to initialize T-RGB");
-            delay(1000);
+            // delay(1000);
         }
     }
 
@@ -107,7 +125,7 @@ void setup() {
 
     panel.setBrightness(16);
 
-    showGIF0();  // 기본 GIF0 실행
+    showIMG4();  // 기본 IMG4 실행
 
     if (Serial) Serial.println("Ready. Press '1', '2', or '3' — no ENTER needed.");
 }
@@ -115,5 +133,5 @@ void setup() {
 void loop() {
     lv_task_handler();
     handleSerialInput();
-    delay(5);
+    // delay(5);
 }
